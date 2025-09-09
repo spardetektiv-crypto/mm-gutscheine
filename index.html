@@ -229,6 +229,15 @@
 
     </section>
 
+        <div class="overlay" id="overlay">
+      <div class="overlay-content">
+        <h2>Gutscheincode gesichert!</h2>
+        <div class="code" id="overlay-code">HUAWEI50</div>
+        <p>Klicke unten, um zum Angebot zu gelangen.</p>
+        <button id="overlay-link" onclick="goToOffer()">Zum Angebot</button>
+      </div>
+    </div>
+
 <section class="faq">
   <h2>FAQ – Häufige Fragen zu MediaMarkt Gutscheinen & Aktionscodes</h2>
 
@@ -287,5 +296,29 @@
 
 
   </main>
+   <script>
+    function toggleDetails(id) {
+      var el = document.getElementById(id);
+      el.style.display = el.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function showOverlay(event, code, link) {
+      event.preventDefault();
+      document.getElementById('overlay-code').innerText = code;
+      document.getElementById('overlay-link').setAttribute('data-link', link);
+      document.getElementById('overlay').style.display = 'flex';
+    }
+
+    function goToOffer() {
+      var link = document.getElementById('overlay-link').getAttribute('data-link');
+      window.open(link, '_blank');
+      document.getElementById('overlay').style.display = 'none';
+    }
+
+    // Overlay schließen bei Klick außerhalb
+    document.getElementById('overlay').addEventListener('click', function(e){
+      if(e.target === this) this.style.display = 'none';
+    });
+  </script>
 </body>
 </html>
