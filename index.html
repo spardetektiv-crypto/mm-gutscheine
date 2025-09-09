@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
-<head><meta name="google-site-verification" content="IflTgRGX1-CgEH32U5LYdwauhXHM3X9AynG_HD90g1w" />
+<head>
+  <meta name="google-site-verification" content="IflTgRGX1-CgEH32U5LYdwauhXHM3X9AynG_HD90g1w" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="MediaMarkt Gutschein & Aktionscode – Spare jetzt mit aktuellen Angeboten und Aktionen bei MediaMarkt. Finde Deals, Rabatte und exklusive Vorteile.">
@@ -17,14 +18,75 @@
     a.button { display: inline-block; margin-top: 10px; padding: 10px 15px; background: #e60000; color: #fff; border-radius: 8px; text-decoration: none; }
     .info { position: absolute; top: 15px; right: 15px; cursor: pointer; font-weight: bold; background: #eee; border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; }
     .details { display: none; margin-top: 10px; font-size: 0.9rem; color: #555; }
-    .faq { margin-top: 40px; }
-    .faq h3 { color: #e60000; }
+
+    /* Overlay für Gutscheincode */
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .overlay-content {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 320px;
+      animation: popin 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    .overlay-content h2 { margin-bottom: 20px; color: #e60000; }
+    .overlay-content .code {
+      font-size: 24px;
+      font-weight: bold;
+      color: #0070f3;
+      margin-bottom: 20px;
+    }
+    .overlay-content button {
+      padding: 10px 20px;
+      border: none;
+      background: #e60000;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .overlay-content button:hover { background: #b20000; }
+    @keyframes popin {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
   </style>
   <script>
     function toggleDetails(id) {
       var el = document.getElementById(id);
       el.style.display = el.style.display === 'block' ? 'none' : 'block';
     }
+
+    function showOverlay(event, code, link) {
+      event.preventDefault();
+      document.getElementById('overlay-code').innerText = code;
+      document.getElementById('overlay-link').setAttribute('data-link', link);
+      document.getElementById('overlay').style.display = 'flex';
+    }
+
+    function goToOffer() {
+      var link = document.getElementById('overlay-link').getAttribute('data-link');
+      window.open(link, '_blank');
+      document.getElementById('overlay').style.display = 'none';
+    }
+
+    // Overlay schließen, wenn Klick außerhalb
+    window.addEventListener('click', function(e){
+      var overlay = document.getElementById('overlay');
+      if(e.target === overlay){
+        overlay.style.display = 'none';
+      }
+    });
   </script>
 </head>
 <body>
@@ -52,6 +114,14 @@
         <a href="https://www.mediamarkt.de/de/campaign/samsung-week" class="button">Zum Angebot</a>
       <div class="details" id="d4">Nur bis 09.09.2025 gültig. Gilt auf Samsung Aktionsartikel</div>
       </div>
+
+      <div class="offer">
+  <span class="badge">50€ MediaMarkt Aktionscode</span>
+  <h2>Jetzt 50€ Rabatt auf die neue HUAWEI WATCH GT Series sichern</h2>
+  <span class="info" onclick="toggleDetails('dHuawei')">i</span>
+  <a href="https://www.mediamarkt.de/de/campaign/huawei" class="button" onclick="showOverlay(event,'HUAWEI50','https://www.mediamarkt.de/de/campaign/huawei')">Zum Angebot</a>
+  <div class="details" id="dHuawei">Gilt nur für die HUAWEI WATCH GT Series.</div>
+</div>
 
       <div class="offer">
         <span class="badge">Bis zu 60% Rabatt</span>
