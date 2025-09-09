@@ -45,42 +45,6 @@
         <div class="details" id="d1">Kein MediaMarkt Gutscheincode erforderlich. Als MyMediaMarkt Kunde kannst du mit jedem Einkauf Geld sparen. 50.000 gesammelte Punkte ergeben z.B. einen 50€ MediaMarkt Coupon.</div>
       </div>
 
-   <div class="offer">
-  <span class="badge">50€ MediaMarkt Aktionscode</span>
-  <h2>Jetzt 50€ Rabatt auf die neue HUAWEI WATCH GT Series sichern</h2>
-  <a href="https://www.mediamarkt.de/de/campaign/huawei" class="button" onclick="showOverlay(event, 'HUAWEI50')">Zum Angebot</a>
-</div>
-
-<!-- Overlay -->
-<div class="overlay" id="overlay">
-  <div class="overlay-content">
-    <h2>Gutscheincode gesichert!</h2>
-    <div class="code" id="code">HUAWEI50</div>
-    <p>Klicke unten, um zum Angebot zu gelangen.</p>
-    <button onclick="goToOffer()">Zum Angebot</button>
-  </div>
-</div>
-
-<script>
-  function showOverlay(event, code) {
-    event.preventDefault(); // verhindert direktes Springen
-    document.getElementById('code').innerText = code;
-    document.getElementById('overlay').style.display = 'flex';
-  }
-
-  function goToOffer() {
-    window.open('https://www.mediamarkt.de/de/campaign/huawei', '_blank');
-    document.getElementById('overlay').style.display = 'none';
-  }
-
-  // Overlay auch schließen, wenn man außerhalb klickt
-  document.getElementById('overlay').addEventListener('click', function(e) {
-    if(e.target === this) {
-      this.style.display = 'none';
-    }
-  });
-</script>
-
             <div class="offer">
         <span class="badge">Bis zu 47% Rabatt</span>
         <h2>Samsung IFA Highlights</h2>
