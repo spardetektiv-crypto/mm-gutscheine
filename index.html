@@ -53,6 +53,30 @@
         <div class="details" id="d3">Keine MediaMarkt Gutschein nötig. Die Artikel sind bereits rabattiert.</div>
       </div>
 
+   <div class="offer">
+  <span class="badge">50€ MediaMarkt Aktionscode</span>
+  <h2>Jetzt 50€ Rabatt auf die neue HUAWEI WATCH GT Series sichern</h2>
+  <span class="info" onclick="toggleDetails('d99')">i</span>
+  <a href="https://www.mediamarkt.de/de/campaign/huawei" class="button" onclick="showCode(event, 'd99')">Zum Angebot</a>
+  <div class="details" id="d99" style="display:none">
+    Dein MediaMarkt Gutscheincode: <strong>HUAWEI50</strong>
+  </div>
+</div>
+
+<script>
+function toggleDetails(id) {
+  const el = document.getElementById(id);
+  el.style.display = el.style.display === 'none' ? 'block' : 'none';
+}
+
+// Klick auf Button: zeigt Gutscheincode UND öffnet Link in neuem Tab
+function showCode(event, id) {
+  event.preventDefault(); // verhindert das sofortige Springen zum Link
+  toggleDetails(id); // zeigt den Gutscheincode an
+  window.open(event.currentTarget.href, '_blank'); // öffnet Link in neuem Tab
+}
+</script>
+
             <div class="offer">
         <span class="badge">Bis zu 47% Rabatt</span>
         <h2>Samsung IFA Highlights</h2>
